@@ -2,6 +2,7 @@ import React from "react";
 import { useFetch } from "./useFetch";
 import { useDispatch } from "react-redux";
 import { addItems } from "../features/cartSlice";
+import { Link } from "react-router-dom";
 
 const Products = () => {
   const { data } = useFetch("https://fakestoreapi.com/products/");
@@ -12,7 +13,7 @@ const Products = () => {
       <div className="products">
         {data &&
           data.map((product) => (
-            <div className="card" key={product.id}>
+            <Link to={`/cart/${product.id}`} className="card" key={product.id}>
               <span className="price">{`${product.price}$`}</span>
               <img src={product.image} alt="" />
               <div className="content">
@@ -24,7 +25,7 @@ const Products = () => {
                   Add to cart
                 </button>
               </div>
-            </div>
+            </Link>
           ))}
       </div>
     </>

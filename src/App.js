@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
-import Cart from "./components/Cart";
+import CartDetails from "./components/CartDetails";
 import Navbar from "./components/Navbar";
 import "./App.css";
 import ItemsList from "./components/ItemsList";
@@ -11,7 +11,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/cart" element={<Cart />} /> */}
+          <Route path="/cart/:id" element={<CartDetails />} />
           <Route path="/list" element={<ItemsList />} />
         </Routes>
       </BrowserRouter>
