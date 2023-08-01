@@ -6,7 +6,7 @@ const Navbar = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   return (
     <nav className="navbar justify-content-between p-3">
-      <a className="navbar-brand">
+      <a href="/">
         <h1>Navbar</h1>
       </a>
       <div className="d-flex align-items-center">

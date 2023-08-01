@@ -6,3 +6,8 @@ body {
   font-family: "Work Sans", sans-serif;
   background-color: black;
 }
+
+i {
+  color: white;
+  font-size: 10rem;
+}

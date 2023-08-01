@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 const ItemsList = () => {
   const itemsInCart = useSelector((state) => state.cart.itemsInCart);
-
+  console.log(itemsInCart, "ssssssssssss");
   return (
     <div className="container mt-5">
       <table className="list-of-items-added">
@@ -22,23 +22,31 @@ const ItemsList = () => {
           </tr>
         </thead>
         <hr />
-        <tbody>
-          {itemsInCart.map((product) => (
-            <tr className="item-data" key={product.id}>
-              <td className="item">
-                <img src={product.image} alt="" className="img-fluid w-25" />
-                <div className="item-info">
-                  <p>{product.title}</p>
-                </div>
-              </td>
-              <td>$463.598</td>
-              <td>
-                <button className="btn btn-danger">Remove Items</button>
-              </td>
-              <td>$463.598</td>
-            </tr>
-          ))}
-        </tbody>
+        {itemsInCart ? (
+          <tbody>
+            {itemsInCart.map((product) => (
+              <tr className="item-data" key={product[0].id}>
+                <td className="item">
+                  <img
+                    src={product[0].image}
+                    alt=""
+                    className="img-fluid w-25"
+                  />
+                  <div className="item-info">
+                    <p>{product[0].title}</p>
+                  </div>
+                </td>
+                <td>{product[0].price}</td>
+                <td>
+                  <p>{product[1]}</p>
+                </td>
+                <td>{product[1] * product[0].price}</td>
+              </tr>
+            ))}
+          </tbody>
+        ) : (
+          <i class="fa-solid fa-spinner fa-spin-pulse"></i>
+        )}
       </table>
     </div>
   );

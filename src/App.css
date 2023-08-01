@@ -75,16 +75,13 @@ img {
 }
 
 .added-cart {
-  position: relative;
-  display: inline-block;
+  display: grid;
+  grid-template-columns: 40% 50%;
 }
 
 .cont {
   color: white;
-  max-width: 40%;
-  position: absolute;
-  left: 30%;
-  top: 30%;
+  padding: 20px;
 }
 
 .cont p {
@@ -104,4 +101,8 @@ table {
 }
 td {
   vertical-align: middle;
+}
+
+.item-data {
+  padding: 20px;
 }

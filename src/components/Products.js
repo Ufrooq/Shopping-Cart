@@ -1,13 +1,9 @@
 import React from "react";
 import { useFetch } from "./useFetch";
-import { useDispatch } from "react-redux";
-import { addItems } from "../features/cartSlice";
 import { Link } from "react-router-dom";
 
 const Products = () => {
   const { data } = useFetch("https://fakestoreapi.com/products/");
-  const dispatch = useDispatch();
-
   return (
     <>
       <div className="products">
@@ -18,12 +14,6 @@ const Products = () => {
               <img src={product.image} alt="" />
               <div className="content">
                 <h2>{product.title}</h2>
-                <button
-                  className="btn btn-outline-primary"
-                  onClick={() => dispatch(addItems(product))}
-                >
-                  Add to cart
-                </button>
               </div>
             </Link>
           ))}
