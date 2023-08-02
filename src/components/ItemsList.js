@@ -2,8 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const ItemsList = () => {
-  const itemsInCart = useSelector((state) => state.cart.itemsInCart);
-  console.log(itemsInCart, "ssssssssssss");
+  const { itemsInCart, totalPrice } = useSelector((state) => state.cart);
   return (
     <div className="container mt-5">
       <table className="list-of-items-added">
@@ -21,7 +20,6 @@ const ItemsList = () => {
             <th>Total</th>
           </tr>
         </thead>
-        <hr />
         {itemsInCart ? (
           <tbody>
             {itemsInCart.map((product) => (
@@ -43,6 +41,12 @@ const ItemsList = () => {
                 <td>{product[1] * product[0].price}</td>
               </tr>
             ))}
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Grand Total : {totalPrice} </td>
+            </tr>
           </tbody>
         ) : (
           <i class="fa-solid fa-spinner fa-spin-pulse"></i>
