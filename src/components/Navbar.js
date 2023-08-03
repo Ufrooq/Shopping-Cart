@@ -7,6 +7,7 @@ import axios from "axios";
 const Navbar = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const [isTyping, setisTyping] = useState("");
+  const [showIcon, setshowIcon] = useState(false);
   const [suggestions, setsuggestions] = useState(null);
   const typingTimeoutRef = useRef(null);
 
@@ -32,6 +33,7 @@ const Navbar = () => {
     }
     typingTimeoutRef.current = setTimeout(() => {
       fetchData(e.target.value);
+      setshowIcon(false);
     }, 1000);
     setisTyping(e.target.value);
   };
@@ -47,10 +49,13 @@ const Navbar = () => {
             value={isTyping}
             placeholder="Search items..."
             onChange={handleSearch}
+            onKeyDown={() => {
+              setshowIcon(true);
+            }}
           />
           <Suggestions id="items-suggestions" className="position-absolute">
             <ul>
-              {isTyping ? (
+              {showIcon ? (
                 <i class="fa-solid fa-spinner "></i>
               ) : (
                 <>

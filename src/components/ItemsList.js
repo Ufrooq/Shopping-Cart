@@ -1,8 +1,13 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addItems, removeItems } from "../features/cartSlice";
 
 const ItemsList = () => {
   const { itemsInCart, totalPrice } = useSelector((state) => state.cart);
+  // useEffect(() => {
+  //   console.log("total items changed");
+  // }, [itemsInCart]);
+  const dispatch = useDispatch();
   return (
     <div className="container mt-5">
       <table className="list-of-items-added">
@@ -14,7 +19,7 @@ const ItemsList = () => {
         </colgroup>
         <thead>
           <tr>
-            <th>item</th>
+            <th>Items</th>
             <th>Price</th>
             <th>Quantity</th>
             <th>Total</th>
@@ -37,6 +42,18 @@ const ItemsList = () => {
                 <td>{product[0].price}</td>
                 <td>
                   <p>{product[1]}</p>
+                  <button
+                    className="btn btn-success me-3"
+                    onClick={() => dispatch(addItems(product[0]))}
+                  >
+                    +
+                  </button>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => dispatch(removeItems(product[0]))}
+                  >
+                    -
+                  </button>
                 </td>
                 <td>{product[1] * product[0].price}</td>
               </tr>
@@ -45,7 +62,7 @@ const ItemsList = () => {
               <td></td>
               <td></td>
               <td></td>
-              <td>Grand Total : {totalPrice} </td>
+              <td>Grand Total : {totalPrice.toFixed(2)} </td>
             </tr>
           </tbody>
         ) : (

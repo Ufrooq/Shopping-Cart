@@ -9,6 +9,7 @@ export const cartSlice = createSlice({
   },
   reducers: {
     addItems: (state, actions) => {
+      console.log(actions.payload.price);
       state.cartItems += 1;
       state.totalPrice += actions.payload.price;
       for (const i of state.itemsInCart) {
@@ -24,8 +25,19 @@ export const cartSlice = createSlice({
       let newArry = [];
       console.log(acitons.payload);
     },
-    removeItems: (state) => {
+    removeItems: (state, actions) => {
       state.cartItems -= 1;
+      const updated_itemsIn_cart = state.itemsInCart.filter((item) => {
+        if (item[0].id == actions.payload.id) {
+          if (item[1] > 1) {
+            item[1] -= 1;
+            return;
+          } else if (item[1] == 1) {
+            //console.log("removing");
+          }
+        }
+      });
+      state.itemsInCart = updated_itemsIn_cart;
     },
   },
 });

@@ -91,10 +91,12 @@ img {
 }
 
 table {
+  text-align: center;
   table-layout: fixed;
   width: 100%;
   color: white;
-  border: 1.5px solid #fff;
+  border: 1px solid #ffffff85;
+  padding: 10px;
 }
 .item {
   display: flex;
@@ -102,16 +104,21 @@ table {
   column-gap: 20px;
   align-items: center;
 }
-td {
-  vertical-align: middle;
-}
-tr {
-  border: 1px solid #fff;
-  padding: 8px;
-}
 
-.item-data {
+.list-of-items-added th {
+  vertical-align: middle;
+  border: 1px solid #ffffff85;
+}
+.list-of-items-added td,
+th {
+  vertical-align: middle;
+  border: 1px solid #ffffff85;
   padding: 20px;
+}
+.list-of-items-added tr {
+  border: 1px solid #ffffff85;
+  padding: 10px;
+  margin-top: 20px;
 }
 
 #search-items {
